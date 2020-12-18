@@ -41,19 +41,16 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'locale' => 'array'
     ];
 
-    public function allowedLocale() {
-        return $this->allowedAllLocale() || $this->locale[app()->getLocale()];
-    }
-
-    public function allowedAllLocale() {
-        return $this->isAdmin(); // As an example, admin is allowed all locale
-    }
 
     public function articles()
     {
         return $this->hasMany(Article::class);
+    }
+
+    public function language()
+    {
+        return $this->belongsTo(Language::class,'id');
     }
 }

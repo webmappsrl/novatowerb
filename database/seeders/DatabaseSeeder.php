@@ -13,12 +13,40 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        \App\Models\Language::factory(1)->create([
+
+            'name'=>'French',
+        ]);
+        \App\Models\Language::factory(1)->create([
+
+            'name'=>'English',
+        ]);
+        \App\Models\Language::factory(1)->create([
+
+            'name'=>'Italian',
+        ]);
+        \App\Models\Language::factory(1)->create([
+
+            'name'=>'Spanish',
+        ]);
+        \App\Models\Language::factory(1)->create([
+
+            'name'=>'Russian',
+        ]);
+        \App\Models\Language::factory(1)->create([
+
+            'name'=>'German',
+        ]);
+
+
         \App\Models\User::factory(1)->create([
 
             'name'=>'Webmapp Team',
             'email'=>'team@webmapp.it',
             'password'=>bcrypt('webmapp2020'),
             'remember_token'=>'qeUa39ecZk',
+            'lang_id_1' =>1,
             'api_token'=>'g2BOTXhe5IfYVTXYmxTfDu1ribuh52lSdoqMj76Bk58MsUl1IuMdBzcg7JYq'
 
         ]);
@@ -28,6 +56,8 @@ class DatabaseSeeder extends Seeder
             'name'=>'Margherita Meraglino',
             'email'=>'mm@webmapp.it',
             'password'=>bcrypt('webmapp2020'),
+            'lang_id_1' =>1,
+
             'remember_token'=>'qeUad39ecZk',
             'api_token'=>'nkP9z4xBlliOqPmKWDJRzSFQ3fCYEfnAhgum7l2HO333nj8kD0'
 
@@ -38,6 +68,7 @@ class DatabaseSeeder extends Seeder
             'name'=>'Sabrina Fontanini',
             'email'=>'sf@webmapp.it',
             'password'=>bcrypt('webmapp2020'),
+            'lang_id_1' =>1,
             'remember_token'=>'qeUad39ecZk',
             'api_token'=>'MEUofNffVFpg4ITWTe84GrHhxlQ3YAWX1daEILTM2gzowtk3gx'
 
