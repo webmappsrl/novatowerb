@@ -8,7 +8,7 @@ describe('Login Nova_Tower_Babel', () => {
         cy.url().should('contain', '/')
 
 
-        cy.get('#nova > div > div.min-h-screen.flex-none.pt-header.min-h-screen.w-sidebar.bg-grad-sidebar.px-6 > ul > li:nth-child(4) > a').click()
+        cy.get('#nova > div > div.min-h-screen.flex-none.pt-header.min-h-screen.w-sidebar.bg-grad-sidebar.px-6 > ul > li:nth-child(3) > a').click()
         cy.get('#nova > div > div.content > div.px-view.py-view.mx-auto > div.relative > div.card > div.relative > div.overflow-hidden.overflow-x-auto.relative > table > tbody > tr > td.td-fit.text-right.pr-6.align-middle > div > span:nth-child(2) > a > svg').click()
         cy.get('#nova > div > div.content > div.px-view.py-view.mx-auto > div.relative > form > div.mb-8 > div > div:nth-child(6) > div.py-6.px-8.w-1\\/2 > div.flex.items-center > select').select('Spanish')
         cy.get('#nova > div > div.content > div.px-view.py-view.mx-auto > div.relative > form > div.mb-8 > div > div.flex.border-b.border-40.remove-bottom-border > div.py-6.px-8.w-1\\/2 > div.flex.items-center > select').select('Russian')

@@ -64,11 +64,11 @@ class Articles extends Resource
             Translatable::make([
                 Text::make('Title'),
                 Text::make('Body'),
-            ])->locales([$l1->name,$l2->name,$l3->name]),
+            ])->locales([$l1->sigla,$l2->sigla,$l3->sigla]),
 
 
-            DateTime::make('created_at'),
-            DateTime::make('updated_at'),
+//            DateTime::make('created_at'),
+//            DateTime::make('updated_at'),
             BelongsTo::make('User'),
 
             Text::make('img'),

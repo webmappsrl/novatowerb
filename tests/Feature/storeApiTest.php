@@ -70,6 +70,7 @@ class storeApiTest extends TestCase
         ];
 
         //check article
+
         $response = $this->withHeaders([
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',

@@ -16,27 +16,33 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Language::factory(1)->create([
 
-            'name'=>'fr',
+            'name'=>'French',
+            'sigla'=>'fr',
         ]);
         \App\Models\Language::factory(1)->create([
 
-            'name'=>'en',
+            'name'=>'English',
+            'sigla'=>'en',
         ]);
         \App\Models\Language::factory(1)->create([
 
-            'name'=>'it',
+            'name'=>'Italian',
+            'sigla'=>'it',
         ]);
         \App\Models\Language::factory(1)->create([
 
-            'name'=>'es',
+            'name'=>'Spanish',
+            'sigla'=>'es',
         ]);
         \App\Models\Language::factory(1)->create([
 
-            'name'=>'ru',
+            'name'=>'Russian',
+            'sigla'=>'ru',
         ]);
         \App\Models\Language::factory(1)->create([
 
-            'name'=>'de',
+            'name'=>'German',
+            'sigla'=>'de',
         ]);
 
 
@@ -46,7 +52,9 @@ class DatabaseSeeder extends Seeder
             'email'=>'team@webmapp.it',
             'password'=>bcrypt('webmapp2020'),
             'remember_token'=>'qeUa39ecZk',
-            'lang_id_1' =>1,
+            'lang_id_1' =>4,
+            'lang_id_2' =>1,
+            'lang_id_3' =>2,
             'api_token'=>'g2BOTXhe5IfYVTXYmxTfDu1ribuh52lSdoqMj76Bk58MsUl1IuMdBzcg7JYq'
 
         ]);
@@ -57,6 +65,8 @@ class DatabaseSeeder extends Seeder
             'email'=>'mm@webmapp.it',
             'password'=>bcrypt('webmapp2020'),
             'lang_id_1' =>1,
+            'lang_id_2' =>2,
+            'lang_id_3' =>3,
 
             'remember_token'=>'qeUad39ecZk',
             'api_token'=>'nkP9z4xBlliOqPmKWDJRzSFQ3fCYEfnAhgum7l2HO333nj8kD0'
@@ -69,6 +79,8 @@ class DatabaseSeeder extends Seeder
             'email'=>'sf@webmapp.it',
             'password'=>bcrypt('webmapp2020'),
             'lang_id_1' =>1,
+            'lang_id_2' =>4,
+            'lang_id_3' =>6,
             'remember_token'=>'qeUad39ecZk',
             'api_token'=>'MEUofNffVFpg4ITWTe84GrHhxlQ3YAWX1daEILTM2gzowtk3gx'
 
@@ -79,7 +91,9 @@ class DatabaseSeeder extends Seeder
             'name'=>'Marco Baroncini',
             'email'=>'mb@webmapp.it',
             'password'=>bcrypt('webmapp2020'),
-            'lang_id_1' =>6,
+            'lang_id_1' =>5,
+            'lang_id_2' =>3,
+            'lang_id_3' =>1,
             'remember_token'=>'qeUad39ecZk',
             'api_token'=>'izjY6Y8fk8y4ztWuagfdaPzaszOvo1ix8ghvApUv9JRjMZP7PR'
 
