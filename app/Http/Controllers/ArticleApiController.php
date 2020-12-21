@@ -18,7 +18,11 @@ class ArticleApiController extends Controller
         return response()->json($article);
     }
 
-
+    public function showApi($n)
+    {
+        $a = Article::find($n);
+        return response()->json($a);
+    }
     public function storeApi(Request $request)
     {
         $langValid = ['fr','it','en','ru','de','es'];

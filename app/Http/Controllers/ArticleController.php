@@ -15,11 +15,7 @@ class ArticleController extends Controller
         return view('showArticle',['article'=>$a]);
     }
 
-    public function showApi($n)
-    {
-        $a = Article::find($n);
-        return response()->json($a);
-    }
+
 
     public function index()
     {
