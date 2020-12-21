@@ -31,7 +31,7 @@ describe('Login Nova_Tower_Babel', () => {
         })
 
         cy.get('#nova > div > div.min-h-screen.flex-none.pt-header.min-h-screen.w-sidebar.bg-grad-sidebar.px-6 > ul > li:nth-child(1) > a').click()
-        cy.get('        #nova > div > div.content > div.px-view.py-view.mx-auto > div.relative > div.flex > div.w-full.flex.items-center.mb-6 > div.flex-no-shrink.ml-auto > a').click()
+        cy.get('#nova > div > div.content > div.px-view.py-view.mx-auto > div.relative > div.flex > div.w-full.flex.items-center.mb-6 > div.flex-no-shrink.ml-auto > a').click()
 
         cy.get('input#translations_title_fr').type('Titre français')
         cy.get('input#translations_body_fr').type('cduincdnscndsn')

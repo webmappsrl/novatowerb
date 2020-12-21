@@ -75,7 +75,8 @@ class User extends Resource
 
             BelongsTo::make('Language', 'Language'),
             BelongsTo::make('Language 2','language2','App\Nova\Language'),
-            BelongsTo::make('Language 3','language3','App\Nova\Language')
+            BelongsTo::make('Language 3','language3','App\Nova\Language'),
+
 
         ];
     }

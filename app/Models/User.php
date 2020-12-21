@@ -63,4 +63,5 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Language::class,'lang_id_3');
     }
+
 }

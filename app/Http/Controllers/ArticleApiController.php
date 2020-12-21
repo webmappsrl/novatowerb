@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Article;
+use App\Models\User;
+
 Use App;
 Use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -21,8 +23,8 @@ class ArticleApiController extends Controller
     {
         $langValid = ['fr','it','en','ru','de','es'];
         $token = $request->bearerToken();
-        $user_id= DB::table('users')->select('id')->where('api_token',$token)->get();
-        if (count($user_id) == 0) return response(['error' => 'token does not exist or has not been inserted'],400);
+        $user_id= $user_id = User::where('api_token', $token)->firstOrFail();
+
         $request=$request->all();
         if(!isset($request['title'])||!isset($request['body']))
         {
@@ -31,6 +33,7 @@ class ArticleApiController extends Controller
 
         if (count($request['title']) == count($request['body']))
         {
+            if (count($request['title']) == 0) return response(['error' => 'enter at least one language'],400);
             $t = array_keys($request['title']);
             $b = array_keys($request['body']);
 
@@ -75,17 +78,15 @@ class ArticleApiController extends Controller
 
         //insert
         $article = new Article();
-        $article->user_id = $user_id[0]->id;
+        $article->user_id = $user_id['id'];
         for ($i =0; $i<count($t);$i++)
         {
             $article->setTranslation('title', $t[$i], $request['title'][$t[$i]])
                 ->setTranslation('body', $t[$i], $request['body'][$t[$i]]);
         }
-        $article->save();
 
+        $article->save();
         return response()->json($article, 201);
     }
-
-
 
 }
