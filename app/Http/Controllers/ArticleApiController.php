@@ -19,11 +19,9 @@ class ArticleApiController extends Controller
 
     public function storeApi(Request $request)
     {
-        dd($request->all());
-
         $langValid = ['fr','it','en','ru','de','es'];
+        $token = $request->bearerToken();
         $user_id= DB::table('users')->select('id')->where('api_token',$token)->get();
-
         if (count($user_id) == 0) return response(['error' => 'token does not exist or has not been inserted'],400);
         $request=$request->all();
         if(!isset($request['title'])||!isset($request['body']))

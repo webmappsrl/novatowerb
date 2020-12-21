@@ -16,27 +16,27 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Language::factory(1)->create([
 
-            'name'=>'French',
+            'name'=>'fr',
         ]);
         \App\Models\Language::factory(1)->create([
 
-            'name'=>'English',
+            'name'=>'en',
         ]);
         \App\Models\Language::factory(1)->create([
 
-            'name'=>'Italian',
+            'name'=>'it',
         ]);
         \App\Models\Language::factory(1)->create([
 
-            'name'=>'Spanish',
+            'name'=>'es',
         ]);
         \App\Models\Language::factory(1)->create([
 
-            'name'=>'Russian',
+            'name'=>'ru',
         ]);
         \App\Models\Language::factory(1)->create([
 
-            'name'=>'German',
+            'name'=>'de',
         ]);
 
 

@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Trix;
-use Spatie\NovaTranslatable\Translatable;
+use App\Models\User;
 
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Spatie\NovaTranslatable\Translatable;
 
 class Articles extends Resource
 {
@@ -28,19 +28,19 @@ class Articles extends Resource
      */
     public static $title = 'id';
 
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        return $query->where('user_id',auth()->id());
+    }
+
     /**
      * The columns that should be searched.
      *
      * @var array
      */
     public static $search = [
-        'id', 'user_id', 'title'
+        'id',
     ];
-
-    public static function indexQuery(NovaRequest $request, $query)
-    {
-        return $query->where('user_id',auth()->id());
-    }
 
     /**
      * Get the fields displayed by the resource.
@@ -50,16 +50,25 @@ class Articles extends Resource
      */
     public function fields(Request $request)
     {
+
+        $id = User::find(auth()->id());
+        $l1 = \App\Models\Language::find($id->lang_id_1);
+        $l2 = \App\Models\Language::find($id->lang_id_2);
+        $l3 = \App\Models\Language::find($id->lang_id_3);
+
+
+
         return [
             ID::make(__('ID'), 'id')->sortable(),
 
             Translatable::make([
                 Text::make('Title'),
                 Text::make('Body'),
-            ]),
+            ])->locales([$l1->name,$l2->name,$l3->name]),
 
-//            DateTime::make('created_at'),
-//            DateTime::make('updated_at'),
+
+            DateTime::make('created_at'),
+            DateTime::make('updated_at'),
             BelongsTo::make('User'),
 
             Text::make('img'),

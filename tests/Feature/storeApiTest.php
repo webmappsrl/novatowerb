@@ -10,7 +10,6 @@ use Tests\TestCase;
 class storeApiTest extends TestCase
 {
 
-
 //    public function testBadInsertUser()
 //    {
 //        $token_fake = 'ddddd';
@@ -53,6 +52,8 @@ class storeApiTest extends TestCase
 
     public function testInsertArticle()
     {
+        $this->withoutExceptionHandling();
+
         $token = 'izjY6Y8fk8y4ztWuagfdaPzaszOvo1ix8ghvApUv9JRjMZP7PR';
 
         $data = [
@@ -71,9 +72,9 @@ class storeApiTest extends TestCase
         //check article
         $response = $this->withHeaders([
             'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
             'Authorization' => 'Bearer '.$token,
-        ])->post('/api/store',$data);
-
+        ])->postJson('/api/store',$data);
 
         $response ->assertStatus(201);
         $artMultiLang = Article::find($response['id']);
