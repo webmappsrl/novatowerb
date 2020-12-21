@@ -74,6 +74,17 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
+        \App\Models\User::factory(1)->create([
+
+            'name'=>'Marco Baroncini',
+            'email'=>'mb@webmapp.it',
+            'password'=>bcrypt('webmapp2020'),
+            'lang_id_1' =>6,
+            'remember_token'=>'qeUad39ecZk',
+            'api_token'=>'izjY6Y8fk8y4ztWuagfdaPzaszOvo1ix8ghvApUv9JRjMZP7PR'
+
+        ]);
+
         \App\Models\Article::factory(10)->create([
 
                         'user_id' => 3,
@@ -106,8 +117,6 @@ class DatabaseSeeder extends Seeder
                 'it' => "Io mi rimetto a loro, decidano loro dice Eugenio Giani annunciando che il report sui dati del contagio in Toscana è stato inviato all'Iss affinché possa nuovamente essere valutata la classificazione della Toscana arancio e anticipato il passaggio alla fascia di restrizioni gialla. Inutile - dice il presidente della Regione - fare azioni che poi compromettono la trasparenza e la correttezza del dialogo. I dati secondo Giani legittimano la richiesta di zona gialla.Spero che si trovino le condizioni",
             ],
             'img' => 'https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80'
-
-
         ]);
 
 

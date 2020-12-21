@@ -51,6 +51,16 @@ class User extends Authenticatable
 
     public function language()
     {
-        return $this->belongsTo(Language::class,'id');
+        return $this->belongsTo(Language::class,'lang_id_1');
+    }
+
+    public function language2()
+    {
+        return $this->belongsTo(Language::class,'lang_id_2');
+    }
+
+    public function language3()
+    {
+        return $this->belongsTo(Language::class,'lang_id_3');
     }
 }

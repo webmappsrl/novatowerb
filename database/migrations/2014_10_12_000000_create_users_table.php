@@ -21,7 +21,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->unsignedBigInteger('lang_id_1');
-
+            $table->unsignedBigInteger('lang_id_2')->nullable();
+            $table->unsignedBigInteger('lang_id_3')->nullable();
             $table->text('img')->nullable();
             $table->rememberToken();
             $table->string('api_token', 64)->unique()->default(Str::random(50));
@@ -30,7 +31,12 @@ class CreateUsersTable extends Migration
             $table->foreign('lang_id_1')
                 ->references('id')
                 ->on('languages');
-
+            $table->foreign('lang_id_2')
+                ->references('id')
+                ->on('languages');
+            $table->foreign('lang_id_3')
+                ->references('id')
+                ->on('languages');
 
         });
     }

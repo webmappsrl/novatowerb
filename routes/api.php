@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ArticleApiController;
+
 
 
 /*
@@ -19,8 +21,7 @@ use App\Http\Controllers\ArticleController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/index/{value}',[ArticleController::class, 'indexApi']);
-Route::get('/show/{id}',[ArticleController::class, 'showApi']);
-Route::post('/store',[ArticleController::class,'storeApi']);
-Route::post('/storeSingleLang',[ArticleController::class,'storeApiSingleLang']);
+Route::get('/index/{value}',[ArticleApiController::class, 'indexApi']);
+Route::get('/show/{id}',[ArticleApiController::class, 'showApi']);
+Route::post('/store',[ArticleApiController::class,'storeApi']);
 

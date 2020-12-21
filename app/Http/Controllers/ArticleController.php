@@ -107,40 +107,6 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function storeApi(Request $request)
-    {
-
-        $token = $request->bearerToken();
-        $user_id= DB::table('users')->select('id')->where('api_token',$token)->get();
-        if (count($user_id) == 0) return response(['error' => 'token does not exist or has not been inserted'],400);
-
-        $request=$request->all();
-
-        $validator = Validator::make($request, [
-            'title.en' => 'required|string',
-            'body.en' => 'required|string',
-            'title.fr' => 'required|string',
-            'body.fr' => 'required|string',
-            'title.it' => 'required|string',
-            'body.it' => 'required|string',
-        ]);
-
-        if($validator->fails()){
-            return response(['error' => $validator->errors(), 'Validation Error'],400);
-        }
-        $article = new Article();
-        $article->user_id = $user_id[0]->id;
-        $article
-            ->setTranslation('title', 'en', $request['title']['en'])
-            ->setTranslation('body', 'en', $request['body']['en'])
-            ->setTranslation('title', 'fr', $request['title']['fr'])
-            ->setTranslation('body', 'fr', $request['body']['fr'])
-            ->setTranslation('title', 'it', $request['title']['it'])
-            ->setTranslation('body', 'it', $request['body']['it'])
-            ->save();
-
-        return response()->json($article, 201);
-    }
 
     public function storeApiSingleLang(Request $request)
     {
@@ -169,5 +135,7 @@ class ArticleController extends Controller
         $request = Article::create($request);
         return response()->json($request, 201);
     }
+
+
 
 }
