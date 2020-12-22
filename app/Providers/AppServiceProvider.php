@@ -24,6 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Translatable::defaultLocales(['en', 'fr','it']);
+//        Translatable::defaultLocales(['en', 'fr','it']);
     }
 }

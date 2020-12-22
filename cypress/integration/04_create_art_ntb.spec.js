@@ -16,7 +16,7 @@ describe('Login Nova_Tower_Babel', () => {
 
         cy.get('#nova > div > div.content > div.px-view.py-view.mx-auto > div.relative > div.mb-8 > div > div.card.mb-6.py-3.px-6 > div:nth-child(6) > div.w-3\\/4.py-4.break-words > a').each(($e, index, $list) => {
             const text = $e.text()
-            expect(text).to.eq('\n      French\n    ')
+            expect(text).to.eq('\n      Italian\n    ')
 
         })
         cy.get('#nova > div > div.content > div.px-view.py-view.mx-auto > div.relative > div.mb-8 > div > div.card.mb-6.py-3.px-6 > div:nth-child(7) > div.w-3\\/4.py-4.break-words > a').each(($e, index, $list) => {

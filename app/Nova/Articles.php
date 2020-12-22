@@ -59,12 +59,24 @@ class Articles extends Resource
 
 
         return [
+
             ID::make(__('ID'), 'id')->sortable(),
 
-            Translatable::make([
-                Text::make('Title'),
-                Text::make('Body'),
-            ])->locales([$l1->sigla,$l2->sigla,$l3->sigla]),
+            Text::make('Title')
+                ->rules('required', 'min:2')
+                ->translatable([
+                    $l1->sigla => $l1->name . ' (Main)',
+                    $l2->sigla => $l2->name,
+                    $l3->sigla => $l3->name
+                ]),
+
+            Text::make('Body')
+                ->rules('required', 'min:2')
+                ->translatable([
+                    $l1->sigla => $l1->name. ' (Main)',
+                    $l2->sigla => $l2->name,
+                    $l3->sigla => $l3->name
+                ]),
 
 
 //            DateTime::make('created_at'),
