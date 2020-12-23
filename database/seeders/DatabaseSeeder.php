@@ -51,10 +51,8 @@ class DatabaseSeeder extends Seeder
             'name'=>'Webmapp Team',
             'email'=>'team@webmapp.it',
             'password'=>bcrypt('webmapp2020'),
+            'role'=>'Admin',
             'remember_token'=>'qeUa39ecZk',
-            'lang_id_1' =>4,
-            'lang_id_2' =>1,
-            'lang_id_3' =>2,
             'api_token'=>'g2BOTXhe5IfYVTXYmxTfDu1ribuh52lSdoqMj76Bk58MsUl1IuMdBzcg7JYq'
 
         ]);
@@ -64,10 +62,7 @@ class DatabaseSeeder extends Seeder
             'name'=>'Margherita Meraglino',
             'email'=>'mm@webmapp.it',
             'password'=>bcrypt('webmapp2020'),
-            'lang_id_1' =>2,
-            'lang_id_2' =>4,
-            'lang_id_3' =>5,
-
+            'role'=>'Editor',
             'remember_token'=>'qeUad39ecZk',
             'api_token'=>'nkP9z4xBlliOqPmKWDJRzSFQ3fCYEfnAhgum7l2HO333nj8kD0'
 
@@ -78,9 +73,7 @@ class DatabaseSeeder extends Seeder
             'name'=>'Sabrina Fontanini',
             'email'=>'sf@webmapp.it',
             'password'=>bcrypt('webmapp2020'),
-            'lang_id_1' =>3,
-            'lang_id_2' =>1,
-            'lang_id_3' =>2,
+            'role'=>'Editor',
             'remember_token'=>'qeUad39ecZk',
             'api_token'=>'MEUofNffVFpg4ITWTe84GrHhxlQ3YAWX1daEILTM2gzowtk3gx'
 
@@ -91,15 +84,12 @@ class DatabaseSeeder extends Seeder
             'name'=>'Marco Baroncini',
             'email'=>'mb@webmapp.it',
             'password'=>bcrypt('webmapp2020'),
-            'lang_id_1' =>5,
-            'lang_id_2' =>3,
-            'lang_id_3' =>1,
+            'role'=>'Admin',
             'remember_token'=>'qeUad39ecZk',
             'api_token'=>'izjY6Y8fk8y4ztWuagfdaPzaszOvo1ix8ghvApUv9JRjMZP7PR'
 
         ]);
 
-        //SF
         \App\Models\Article::factory(10)->create([
 
                         'user_id' => 3,
@@ -114,9 +104,12 @@ class DatabaseSeeder extends Seeder
                             'en' => "Framework of self, we scrutinise each participant's data from their first PhD thesis draft, a retrospective written report, and two rounds of semi-structured interviews. Results reveal that, by interacting with others (e.g., supervisors, theorists) in the context where the thesis is produced, the participants' epistemology has developed. This epistemological development itself is the process in which students forge their own philosophical views in relation to knowledge and knowing as individual researchers and members of an academic community with shared disciplinary attributes. The philosophical views further inform their writers' voice as the representation of their individual and social selves that are embodied in thesis writing. Results also indicate that Chinese international doctoral students bring valuable cultural assets for potential intercultural communication between Chinese and Anglophone disciplinary scholarships. For these students who write their theses in English as a second or additional language (L2), such interchanges create a space for them to (re)examine the different ideologies that promote their learning",
                         ],
                         'img' => 'https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80'
-
-
         ]);
+        $sf = \App\Models\User::find(2);
+        $sf->languages()->attach([5,4,2]);
+
+
+
 
         //MM
         \App\Models\Article::factory(10)->create([
@@ -135,7 +128,8 @@ class DatabaseSeeder extends Seeder
             ],
             'img' => 'https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80'
         ]);
-
+        $mm = \App\Models\User::find(3);
+        $mm->languages()->attach([3,2,1]);
 
         \App\Models\Article::factory(10000)->create();
     }

@@ -49,19 +49,11 @@ class User extends Authenticatable
         return $this->hasMany(Article::class);
     }
 
-    public function language()
+    public function languages()
     {
-        return $this->belongsTo(Language::class,'lang_id_1');
+        return $this->belongsToMany(Language::class,'language_user');
     }
 
-    public function language2()
-    {
-        return $this->belongsTo(Language::class,'lang_id_2');
-    }
 
-    public function language3()
-    {
-        return $this->belongsTo(Language::class,'lang_id_3');
-    }
 
 }

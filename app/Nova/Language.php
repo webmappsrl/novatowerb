@@ -47,6 +47,9 @@ class Language extends Resource
         ];
     }
 
+    public static $displayInNavigation = false;
+
+
     /**
      * Get the cards available for the request.
      *

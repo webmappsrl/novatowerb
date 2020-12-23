@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\User;
+use App\Models\Language;
 
 Use App;
 Use Illuminate\Support\Facades\DB;
@@ -25,6 +26,7 @@ class ArticleApiController extends Controller
     }
     public function storeApi(Request $request)
     {
+
         $langValid = ['fr','it','en','ru','de','es'];
         $token = $request->bearerToken();
         $user_id= $user_id = User::where('api_token', $token)->firstOrFail();

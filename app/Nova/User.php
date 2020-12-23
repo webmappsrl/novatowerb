@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
@@ -23,6 +24,9 @@ class User extends Resource
      */
     public static $model = \App\Models\User::class;
 
+
+    public static $displayInNavigation = false;
+
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
@@ -41,7 +45,7 @@ class User extends Resource
 
     public static function indexQuery(NovaRequest $request, $query)
     {
-        return $query->where('id',auth()->id());
+        return $query->where('id',$request->user()->id);
     }
 
     /**
@@ -71,12 +75,19 @@ class User extends Resource
                 ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:8')
                 ->updateRules('nullable', 'string', 'min:8'),
-            Text::make('Api_token'),
+            Text::make('Api_token')->canSee(function ($request){
+                return $request->user()->role == 'Admin';
+            }),
 
-            BelongsTo::make('Language', 'Language'),
-            BelongsTo::make('Language 2','language2','App\Nova\Language'),
-            BelongsTo::make('Language 3','language3','App\Nova\Language'),
+            Select::make('Role')->options([
+                'admin' => 'Admin',
+                'editor' => 'Editor',
 
+            ])->canSee(function ($request){
+                return $request->user()->role == 'Admin';
+            }),
+
+            BelongsToMany::make('Languages'),
 
         ];
     }

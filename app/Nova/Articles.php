@@ -30,7 +30,7 @@ class Articles extends Resource
 
     public static function indexQuery(NovaRequest $request, $query)
     {
-        return $query->where('user_id',auth()->id());
+        return $query->where('user_id', $request->user()->id);
     }
 
     /**
@@ -51,10 +51,15 @@ class Articles extends Resource
     public function fields(Request $request)
     {
 
-        $id = User::find(auth()->id());
-        $l1 = \App\Models\Language::find($id->lang_id_1);
-        $l2 = \App\Models\Language::find($id->lang_id_2);
-        $l3 = \App\Models\Language::find($id->lang_id_3);
+        $id = User::find($request->user()->id);
+        $fk_lang_id = $id->languages()->pluck( 'language_id')->toArray();
+        $data=[];
+        for ($i = 0; $i < count($fk_lang_id);$i++)
+        {
+            $dataLang = \App\Models\Language::find($fk_lang_id[$i]);
+            $data += [$dataLang->sigla => $dataLang->name];
+        }
+
 
 
 
@@ -64,19 +69,11 @@ class Articles extends Resource
 
             Text::make('Title')
                 ->rules('required', 'min:2')
-                ->translatable([
-                    $l1->sigla => $l1->name . ' (Main)',
-                    $l2->sigla => $l2->name,
-                    $l3->sigla => $l3->name
-                ]),
+                ->translatable($data),
 
             Text::make('Body')
                 ->rules('required', 'min:2')
-                ->translatable([
-                    $l1->sigla => $l1->name. ' (Main)',
-                    $l2->sigla => $l2->name,
-                    $l3->sigla => $l3->name
-                ]),
+                ->translatable($data),
 
 
 //            DateTime::make('created_at'),
