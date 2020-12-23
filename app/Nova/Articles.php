@@ -57,9 +57,9 @@ class Articles extends Resource
         for ($i = 0; $i < count($fk_lang_id);$i++)
         {
             $dataLang = \App\Models\Language::find($fk_lang_id[$i]);
-            $data += [$dataLang->sigla => $dataLang->name];
+            if ($dataLang->main) $data += [$dataLang->sigla => $dataLang->name. ' (Main)'];
+            else $data += [$dataLang->sigla => $dataLang->name];
         }
-
 
 
 

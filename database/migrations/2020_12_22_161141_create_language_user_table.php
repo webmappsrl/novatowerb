@@ -17,6 +17,7 @@ class CreateLanguageUserTable extends Migration
             $table->id();
             $table->unsignedBigInteger('language_id');
             $table->unsignedBigInteger('user_id');
+            $table->boolean('main')->default(false);
 
             $table->timestamps();
 

@@ -82,10 +82,10 @@ class User extends Resource
             Select::make('Role')->options([
                 'admin' => 'Admin',
                 'editor' => 'Editor',
-
             ])->canSee(function ($request){
                 return $request->user()->role == 'Admin';
             }),
+
 
             BelongsToMany::make('Languages'),
 

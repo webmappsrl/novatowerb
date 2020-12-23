@@ -30,7 +30,8 @@ class ArticlePolicy
      */
     public function view(User $user, Article $article)
     {
-        return true;
+        return $article->user_id === auth()->user()->id;
+
     }
 
     /**

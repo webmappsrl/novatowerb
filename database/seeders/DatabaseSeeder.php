@@ -106,7 +106,8 @@ class DatabaseSeeder extends Seeder
                         'img' => 'https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80'
         ]);
         $sf = \App\Models\User::find(2);
-        $sf->languages()->attach([5,4,2]);
+        $sf->languages()->attach(2, ['main' => true]);
+        $sf->languages()->attach([5,4]);
 
 
 
@@ -129,7 +130,9 @@ class DatabaseSeeder extends Seeder
             'img' => 'https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80'
         ]);
         $mm = \App\Models\User::find(3);
-        $mm->languages()->attach([3,2,1]);
+        $mm->languages()->attach(3, ['main' => true]);
+
+        $mm->languages()->attach([2,1]);
 
         \App\Models\Article::factory(10000)->create();
     }
