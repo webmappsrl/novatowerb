@@ -162,6 +162,52 @@ class storeApiTest extends TestCase
         $response ->assertStatus(400);
         $this->assertSame($response['error'],'enter at least one language');
 
+        $data = [
+            "title" => [
+                "en" => 1,
+                "fr" => "francese",
+                "pl" => "ital"
+
+            ],
+            "body" => [
+                "en" => "ndncidcdksncsdn",
+                "fr" => "ndncidcdksncscddddddn",
+                "it" => "ital"
+            ]
+        ];
+
+        $response = $this->withHeaders([
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer '.$token,
+        ])->postJson('/api/store',$data);
+
+        $response ->assertStatus(400);
+        $this->assertSame($response['error']['en'][0],'The en must be a string.');
+
+        $data = [
+            "title" => [
+                "en" => "enddd",
+                "fr" => "francese",
+                "pl" => "ital"
+
+            ],
+            "body" => [
+                "en" => "ndncidcdksncsdn",
+                "fr" => 2,
+                "it" => "ital"
+            ]
+        ];
+
+        $response = $this->withHeaders([
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer '.$token,
+        ])->postJson('/api/store',$data);
+
+        $response ->assertStatus(400);
+        $this->assertSame($response['error']['fr'][0],'The fr must be a string.');
+
 
 
     }
