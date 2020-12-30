@@ -1,6 +1,6 @@
-describe('Login Nova_Tower_Babel', () => {
+describe('Create Article Ita Eng Fr', () => {
 
-    it('Article Sabrina Fontanini', () => {
+    it('Create Article Ita Eng Fr', () => {
         cy.visit('/nova/login')
         cy.get('input[name=email]').type('sf@webmapp.it')
         cy.get('input[name=password]').type('webmapp2020')

@@ -1,4 +1,4 @@
-describe('Login Nova_Tower_Babel', () => {
+describe('Insert Article SF', () => {
 
     it('Article Sabrina Fontanini', () => {
         cy.visit('/nova/login')
